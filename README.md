@@ -14,7 +14,7 @@
   <a href="https://github.com/frs0n/GestaltEdit/releases"><img src="https://img.shields.io/github/downloads/frs0n/GestaltEdit/total?style=flat-square&label=downloads&color=6E56CF" alt="Downloads"></a>
   <a href="https://github.com/frs0n/GestaltEdit/stargazers"><img src="https://img.shields.io/github/stars/frs0n/GestaltEdit?style=flat-square&color=6E56CF" alt="Stars"></a>
   <img src="https://img.shields.io/badge/iOS%20%7C%20iPadOS-27-000000?style=flat-square&logo=apple&logoColor=white" alt="Platform">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/frs0n/GestaltEdit?style=flat-square&color=6E56CF" alt="MIT License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Noncommercial-6E56CF?style=flat-square" alt="PolyForm Noncommercial License"></a>
 </p>
 
 <a href="https://github.com/frs0n/GestaltEdit/releases/latest"><b>Download IPA</b></a> ·
@@ -30,7 +30,7 @@ Edit `com.apple.MobileGestalt.plist` on-device. Capability presets, a full field
 > This app uses private APIs and modifies system cache data. Bad MobileGestalt values can break system features and may require restoring the device. Use only on devices you own.
 
 > [!IMPORTANT]
-> GestaltEdit is free and open source. Selling it, repackaged or modified, is strictly prohibited.
+> GestaltEdit is free and its source is public. It is licensed for noncommercial use only — selling it, repackaged or modified, is not permitted.
 
 ## Features
 
@@ -62,4 +62,4 @@ Not affiliated with Apple or the projects above.
 
 ## License
 
-[MIT License](LICENSE)
+[PolyForm Noncommercial License 1.0.0](LICENSE) — free for noncommercial use; commercial use is not permitted.

@@ -14,7 +14,7 @@
   <a href="https://github.com/frs0n/GestaltEdit/releases"><img src="https://img.shields.io/github/downloads/frs0n/GestaltEdit/total?style=flat-square&label=downloads&color=6E56CF" alt="下载量"></a>
   <a href="https://github.com/frs0n/GestaltEdit/stargazers"><img src="https://img.shields.io/github/stars/frs0n/GestaltEdit?style=flat-square&color=6E56CF" alt="Stars"></a>
   <img src="https://img.shields.io/badge/iOS%20%7C%20iPadOS-27-000000?style=flat-square&logo=apple&logoColor=white" alt="支持平台">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/frs0n/GestaltEdit?style=flat-square&color=6E56CF" alt="MIT 许可证"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Noncommercial-6E56CF?style=flat-square" alt="PolyForm 非商业许可证"></a>
 </p>
 
 <a href="https://github.com/frs0n/GestaltEdit/releases/latest"><b>下载 IPA</b></a> ·
@@ -30,7 +30,7 @@
 > 本项目使用私有 API 并修改系统缓存数据。错误的取值可能破坏系统功能，严重时需要刷机恢复。请仅在你本人拥有的设备上使用。
 
 > [!IMPORTANT]
-> 本项目完全免费、开源，严禁以任何形式售卖本 App 或其二次打包、修改版本。
+> 本项目免费、源码公开，仅授权非商业用途——严禁以任何形式售卖本 App 或其二次打包、修改版本。
 
 ## 功能
 
@@ -62,4 +62,4 @@
 
 ## 许可证
 
-[MIT License](LICENSE)
+[PolyForm Noncommercial License 1.0.0](LICENSE) —— 非商业用途免费；不得用于商业目的。
