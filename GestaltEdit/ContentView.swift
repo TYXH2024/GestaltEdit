@@ -62,15 +62,15 @@ private struct TweakWorkbench: View {
             List {
                 Section { deviceStatus }
 
-                if viewModel.plist != nil {
-                    tweakSection(.region)
-                    dynamicIslandSection
-                    modelNameSection
+                // In the iOS 18 UI-only build MobileGestalt cannot be read,
+                // so do not hide the tweak catalog just because plist is nil.
+                // The controls remain visible for UI inspection; Apply is disabled below.
+                tweakSection(.region)
+                dynamicIslandSection
+                modelNameSection
 
-                    ForEach(GestaltTweakCategory.allCases.filter { $0 != .region }) { category in
-                        tweakSection(category)
-                    }
-
+                ForEach(GestaltTweakCategory.allCases.filter { $0 != .region }) { category in
+                    tweakSection(category)
                 }
 
                 Section(String(localized: "Developer")) {
@@ -214,7 +214,11 @@ private struct TweakWorkbench: View {
             Spacer()
             Button("Apply") { viewModel.applySelectedTweaks() }
                 .buttonStyle(.borderedProminent)
+#if GESTALTEDIT_UI_ONLY
+                .disabled(true)
+#else
                 .disabled(viewModel.isBusy)
+#endif
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
