@@ -1,3 +1,4 @@
+#if !GESTALTEDIT_UI_ONLY
 import Foundation
 
 enum AutomationCommand {
@@ -71,3 +72,5 @@ private enum AutomationError: LocalizedError {
         }
     }
 }
+
+#endif

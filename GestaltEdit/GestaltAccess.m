@@ -106,6 +106,11 @@ static BOOL GestaltWriteAll(int fd, NSData *data)
 
 - (BOOL)connectWithError:(NSError **)error
 {
+#if GESTALTEDIT_UI_ONLY
+    if (error) *error = GestaltError(100, NSLocalizedString(
+        @"MobileGestalt access is disabled in this iOS 18 UI compatibility build.", nil));
+    return NO;
+#else
     if (!GestaltAccess.isRunningSupportedOS) {
         if (error) *error = GestaltError(0, NSLocalizedString(
             @"GestaltEdit currently supports only iOS and iPadOS 27 beta 1 through beta 4.", nil));
@@ -153,6 +158,7 @@ static BOOL GestaltWriteAll(int fd, NSData *data)
     self.plistPath = badQueryPlist;
     if (error) *error = nil;
     return YES;
+#endif
 }
 
 #pragma mark - Read / Write
