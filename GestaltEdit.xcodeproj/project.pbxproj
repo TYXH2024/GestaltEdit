@@ -277,7 +277,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "GestaltEdit/GestaltEdit-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D GESTALTEDIT_UI_ONLY";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -314,7 +313,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "GestaltEdit/GestaltEdit-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D GESTALTEDIT_UI_ONLY";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
