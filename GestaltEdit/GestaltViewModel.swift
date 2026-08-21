@@ -274,7 +274,11 @@ final class GestaltViewModel: ObservableObject {
             completion?()
             refreshBackups()
             isBusy = false
-            isRespringing = true
+            isRespringing = false
+            notice = GestaltNotice(
+                kind: .success,
+                message: String(localized: "Changes were applied to the local MobileGestalt.plist. The device's system MobileGestalt was not modified.")
+            )
         } catch {
             isDirty = true
             report(error)

@@ -16,18 +16,7 @@ struct ContentView: View {
             BackupLibrary()
                 .tabItem { Label("Restore", systemImage: "archivebox") }
         }
-        .task {
-#if GESTALTEDIT_UI_ONLY
-            // iOS 18 compatibility build: render the UI without invoking the iOS 27 exploit backend.
-#else
-            viewModel.load()
-#endif
-        }
-        .overlay {
-            if viewModel.isRespringing {
-                NeoSpringView()
-            }
-        }
+        .task { viewModel.load() }
         .alert(item: $viewModel.notice) { notice in
             Alert(
                 title: Text(notice.title),
@@ -35,22 +24,6 @@ struct ContentView: View {
                 dismissButton: .default(Text("OK"))
             )
         }
-    }
-}
-
-private struct UnsupportedOSView: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "exclamationmark.triangle")
-                .font(.system(size: 44))
-                .foregroundStyle(.secondary)
-            Text("Unsupported OS Version")
-                .font(.title2.weight(.semibold))
-            Text("GestaltEdit currently supports only iOS and iPadOS 27 beta 1 through beta 4.")
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.secondary)
-        }
-        .padding(24)
     }
 }
 
@@ -62,9 +35,6 @@ private struct TweakWorkbench: View {
             List {
                 Section { deviceStatus }
 
-                // In the iOS 18 UI-only build MobileGestalt cannot be read,
-                // so do not hide the tweak catalog just because plist is nil.
-                // The controls remain visible for UI inspection; Apply is disabled below.
                 tweakSection(.region)
                 dynamicIslandSection
                 modelNameSection
@@ -141,15 +111,6 @@ private struct TweakWorkbench: View {
 
     @ViewBuilder
     private var deviceStatus: some View {
-#if GESTALTEDIT_UI_ONLY
-        Section {
-            Label("UI compatibility mode", systemImage: "info.circle")
-                .foregroundStyle(.secondary)
-            Text("MobileGestalt access is disabled in this iOS 18 build.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-        }
-#else
         if viewModel.plist == nil {
             HStack(spacing: 10) {
                 if viewModel.isBusy || !viewModel.hasAttemptedLoad {
@@ -160,7 +121,7 @@ private struct TweakWorkbench: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundStyle(.orange)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Unable to read MobileGestalt")
+                        Text("Unable to read local MobileGestalt")
                         Button("Reload", action: viewModel.load)
                             .font(.footnote)
                     }
@@ -174,7 +135,6 @@ private struct TweakWorkbench: View {
                 Label(viewModel.aiRegionProfile?.marketingName ?? String(localized: "Current Device"), systemImage: "iphone")
             }
         }
-#endif
     }
 
     private var dynamicIslandSection: some View {
@@ -214,11 +174,7 @@ private struct TweakWorkbench: View {
             Spacer()
             Button("Apply") { viewModel.applySelectedTweaks() }
                 .buttonStyle(.borderedProminent)
-#if GESTALTEDIT_UI_ONLY
-                .disabled(true)
-#else
                 .disabled(viewModel.isBusy)
-#endif
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
